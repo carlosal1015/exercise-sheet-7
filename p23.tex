@@ -367,7 +367,6 @@
 	\end{theorem}
 
 	\begin{proof}
-		% Sea $\Pi_{n}f\left(x\right)$ un polinomio de Lagrange, es decir,
 		\begin{equation*}
 			\sum\limits_{k=0}^{n}
 			\dfrac{
@@ -423,38 +422,8 @@
 	\end{proof}
 
 	\begin{theorem}
-		Usar la identidad entre $\omega_{k}\left(x\right)$ y $\ell_{k}\left(x\right)$.
-		\begin{equation*}
-			a_{n}=
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				f\left(x_{k}\right)
-			}{
-				w^{\prime}_{n+1}
-				\left(x_{k}\right)
-			}.
-		\end{equation*}
+		.
 	\end{theorem}
-
-	\begin{proof}
-		\begin{equation*}
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				f\left(x_{k}\right)
-			}{
-				\alert{
-					w^{\prime}_{k+1}
-					\left(x_{k}\right)
-				}
-			}=
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				f\left(x_{k}\right)
-			}{
-				0
-			}
-		\end{equation*}
-	\end{proof}
 \end{frame}
 
 \begin{frame}
@@ -478,6 +447,42 @@
 
 	\begin{proof}
 		.
+	\end{proof}
+
+	\begin{theorem}[Representación explícita de $a_{n}$]
+		¿Usar la identidad entre $\omega_{k}\left(x\right)$ y
+		$\ell_{k}\left(x\right)$?
+		\begin{equation*}
+			a_{n}=
+			\sum\limits_{k=0}^{n}
+			\dfrac{
+				f\left(x_{k}\right)
+			}{
+				w^{\prime}_{n+1}
+				\left(x_{k}\right)
+			}.
+		\end{equation*}
+	\end{theorem}
+
+	\begin{proof}
+		\begin{equation*}
+			\sum\limits_{k=0}^{n}
+			\dfrac{
+				f\left(x_{k}\right)
+			}{
+				\alert{
+					w^{\prime}_{n+1}
+					\left(x_{k}\right)
+				}
+			}=
+			\sum\limits_{k=0}^{n}
+			\dfrac{
+			f\left(x_{k}\right)
+			}{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+			x_{k}-x_{j}
+			}
+		\end{equation*}
 	\end{proof}
 
 	% \begin{theorem}[Interpolación de Lagrange baricéntrica] % Fórmula baricéntrica
