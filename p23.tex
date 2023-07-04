@@ -39,15 +39,14 @@
 			y_{k}
 			\ell_{k}\left(x\right),
 		\end{equation*}
-		donde $\ell_{k}\left(x\right)$ son los
-		\emph{polinomios característicos} dados por
+		donde
 		\begin{math}
 			\ell_{k}
 			\left(x\right)\coloneq
 			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
 			\dfrac{x-x_{j}}{x_{k}-x_{j}}
 		\end{math}
-		para $0\leq k\leq n$.
+		para $0\leq k\leq n$ son los \emph{polinomios característicos}.
 	\end{definition}
 	% Here $\ell_{0},\ell_{1},\ldots,\ell_{n}$ are polynomials that
 	% depend on the nodes $x_0, x_1, \ldots, x_n$ but not on the
@@ -59,10 +58,10 @@
 	% 	\delta_{ij}=
 	% 	p_{n}
 	% 	\left(x_j\right)=
-	% 	\sum_{k=0}^{n}
+	% 	\sum\limits_{k=0}^{n}
 	% 	y_{k}
 	% 	\ell_k\left(x_j\right)=
-	% 	\sum_{k=0}^{n}
+	% 	\sum\limits_{k=0}^{n}
 	% 	\delta_{ki}
 	% 	\ell_{k}
 	% 	\left(x_j\right)=
@@ -86,7 +85,7 @@
 	% 	\left(x-x_2\right)\cdots
 	% 	\left(x-x_n\right)=
 	% 	c
-	% 	\prod_{j=1}^{n}
+	% 	\prod\limits_{j=1}^{n}
 	% 	\left(x-x_j\right).
 	% \end{equation*}
 
@@ -120,7 +119,7 @@
 				      a_{k}\coloneqq
 				      f\left[x_{0},\ldots,x_{k}\right]
 			      \end{math}
-			      es la $k$-ésima diferencia dividida de Newton, y
+			      es la \emph{$k$-ésima diferencia dividida de Newton}, y
 
 			\item
 
@@ -128,11 +127,180 @@
 				      \omega_{k}
 				      \left(x\right)\coloneqq
 				      \prod\limits_{j=0}^{k-1}
-				      \left(x-x_{j}\right)
+				      x-x_{j}
 			      \end{math}
-			      es el polinomio nodal de grado $k$.
+			      es el \emph{polinomio nodal de grado $k$}.
 		\end{itemize}
 	\end{definition}
+\end{frame}
+
+\begin{frame}
+	\begin{theorem}
+		Para $0\leq k\leq n$ se cumple
+		\begin{math}
+			w^{\prime}_{n+1}
+			\left(x_{k}\right)=
+			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
+			x_{k}-x_{j}.
+		\end{math}
+	\end{theorem}
+
+	\begin{proof}
+		% Sea $x_{k}$ un punto nodal
+		% cualesquiera, donde $0\leq k\leq n$.
+		Si
+		\begin{math}
+			\omega_{\alert{n+1}}
+			\left(x\right)
+			\overset{\text{def}}{=}
+			\prod\limits_{j=0}^{\alert{n+1}-1}
+			x-x_{j}=
+			\prod\limits_{j=0}^{n}
+			x-x_{j}
+		\end{math}, entonces
+		\begin{math}
+			\ln
+			\left(
+			\omega_{n+1}
+			\left(x\right)
+			\right)=
+			\ln
+			\left(
+			\prod\limits_{j=0}^{n}
+			x-x_{j}
+			\right)=
+			\sum\limits_{j=0}^{n}
+			\ln
+			\left(
+			x-x_{j}
+			\right)
+		\end{math}.
+		Derivando,
+
+		\begin{align*}
+			{\left(
+				\ln
+				\left(
+					\omega_{n+1}
+					\left(x\right)
+					\right)
+			\right)}^{\prime} & =
+			{\left(
+			\sum\limits_{j=0}^{n}
+			\ln
+			\left(
+				x-x_{j}
+				\right)
+			\right)}^{\prime}=
+			\sum\limits_{j=0}^{n}
+			{\left(
+			\ln
+			\left(
+				x-x_{j}
+				\right)
+			\right)}^{\prime}.
+			\\
+			\dfrac{
+				\omega^{\prime}_{n+1}\left(x\right)
+			}{
+				\alert{
+					\omega_{n+1}\left(x\right)
+				}
+			}                 & =
+			\sum\limits_{j=0}^{n}
+			\dfrac{{\left(x-x_{j}\right)}^{\prime}}{x-x_{j}}=
+			\sum\limits_{j=0}^{n}
+			\dfrac{1}{x-x_{j}}.
+			\\
+			\Aboxed{
+			w^{\prime}_{n+1}
+			\left(x\right)    & =
+			\alert{
+				\omega_{n+1}
+				\left(x\right)
+			}
+			\sum\limits_{j=0}^{n}
+			\dfrac{1}{x-x_{j}}.
+			}
+			\\
+			w^{\prime}_{n+1}
+			\left(x\right)
+			                  & =
+			\alert{
+				\prod\limits_{j=0}^{n}
+				\left(
+				x-x_{j}
+				\right)
+			}
+			\sum\limits_{j=0}^{n}
+			\dfrac{1}{x-x_{j}}.
+		\end{align*}
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\begin{theorem}
+		Si $\Pi_{n}f\left(x\right)$ el polinomio de Lagrange, entonces
+		\begin{math}
+			\Pi_{n}f\left(x\right)=
+			\sum\limits_{k=0}^{n}
+			\dfrac{
+				\omega_{n+1}\left(x\right)
+			}{
+				\left(x-x_{k}\right)\omega^{\prime}_{n+1}\left(x_{k}\right)
+			}
+			y_{k}
+		\end{math}.
+	\end{theorem}
+
+	\begin{theorem}
+		Usar la identidad entre $\omega_{k}\left(x\right)$ y $\ell_{k}\left(x\right)$.
+		\begin{equation*}
+			a_{k}=
+			\sum\limits_{k=0}^{n}
+			\dfrac{
+				f\left(x_{k}\right)
+			}{
+				w^{\prime}_{k+1}
+				\left(x_{k}\right)
+			}.
+		\end{equation*}
+	\end{theorem}
+
+	\begin{proof}
+		.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\begin{theorem}[Teorema de las diferencias divididas de orden superior]
+		Para $0\leq k\leq n$ se cumple
+		\begin{equation*}
+			a_{k}=
+			f\left[x_{0},\ldots,x_{k}\right]=
+			\dfrac{
+			f\left[x_{1},\ldots,x_{k}\right]-
+			f\left[x_{0},\ldots,x_{k-1}\right]
+			}{x_{k}-x_{0}}.
+			% \begin{cases}
+			% 	0 & \text{si} \\
+			% 	1 & \text{no}
+			% \end{cases}
+		\end{equation*}
+	\end{theorem}
+
+	\begin{proof}
+		.
+	\end{proof}
+
+	\begin{theorem}[Interpolación de Lagrange baricéntrica] % Fórmula baricéntrica
+		\begin{equation*}
+			\lambda_{k}\coloneqq
+			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}
+			\dfrac{1}{x_{k}-x_{j}}=
+			\dfrac{1}{\prod\limits_{\substack{j=0               \\j\neq k}}^{n}x_{k}-x_{j}}
+		\end{equation*}
+	\end{theorem}
 \end{frame}
 
 \begin{frame}
@@ -143,21 +311,21 @@
 		      (p. 312) and based on nodes $x_{0}, x_{1}, \ldots, x_{n}$,
 		      show that for any $f$
 		      \begin{equation*}
-			      \sum_{k=0}^{n}
+			      \sum\limits_{k=0}^{n}
 			      f\left(x_{k}\right)
 			      \ell_{k}\left(x\right)=
-			      \sum_{k=0}^{n}
+			      \sum\limits_{k=0}^{n}
 			      f\left[x_{0},x_{1},\ldots,x_{k}\right]
-			      \prod_{j=0}^{k-1}
+			      \prod\limits_{j=0}^{k-1}
 			      \left(x-x_{j}\right).
 		      \end{equation*}
 
 		      (Continuation) Prove this formula:
 		      \begin{equation*}
 			      f\left[x_{0},x_{1},\ldots,x_{n}\right]=
-			      \sum_{k=0}^{n}
+			      \sum\limits_{k=0}^{n}
 			      f\left(x_{k}\right)
-			      \prod_{\substack{j=0\\j\neq k}}^{n}
+			      \prod\limits_{\substack{j=0\\j\neq k}}^{n}
 			      {\left(x_{k}-x_{j}\right)}^{-1}.
 		      \end{equation*}
 	\end{enumerate}
@@ -187,16 +355,31 @@
 		para $0\leq k\leq n$.
 
 		\begin{align*}
-			\sum_{k=0}^{n}
+			\sum\limits_{k=0}^{n}
 			f\left(x_{k}\right)
 			\alert{\ell_{k}\left(x\right)} & =
-			\sum_{k=0}^{n}
+			\sum\limits_{k=0}^{n}
 			y_{k}
 			\alert{
-			\prod_{\substack{j=0               \\j\neq k}}^{n}
-			\dfrac{x-x_{j}}{x_{k}-x_{j}}.
-			}                              & =
-			\\
+			\prod\limits_{\substack{j=0        \\j\neq k}}^{n}
+			\dfrac{x-x_{j}}{x_{k}-x_{j}}
+			}
+			\shortintertext{por el teorema X}
+			                               & =
+			\sum\limits_{k=0}^{n}
+			a_{k}
+			\omega_{k}\left(x\right).
+		\end{align*}
+
+		\begin{align*}
+			\sum\limits_{k=0}^{n}
+			f\left(x_{k}\right)
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+			{\left(x_{k}-x_{j}\right)}^{-1}
+			 & =
+			\shortintertext{por el teorema Y}
+			 & =
+			a_{k}
 		\end{align*}
 	\end{solution}
 \end{frame}
