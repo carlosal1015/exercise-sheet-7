@@ -1,0 +1,34 @@
+Using the functions $\ell_i$ defined in Section 6.1 (p. 312) and based on nodes $x_0, x_1, \ldots, x_n$, show that for any $f$
+$$
+\sum_{i=0}^{\dot{n}} f\left(x_i\right) \ell_i(x)=\sum_{i=0}^n f\left[x_0, x_1, \ldots, x_i\right] \prod_{j=0}^{i-1}\left(x-x_j\right)
+$$
+(Continuation) Prove this formula:
+$$
+f\left[x_0, x_1, \ldots, x_n\right]=\sum_{i=0}^n f\left(x_i\right) \prod_{\substack{j=0 \\ j \neq i}}^n\left(x_i-x_j\right)^{-1}
+$$
+
+$$
+p(x)=y_0 \ell_0(x)+y_1 \ell_1(x)+\cdots+y_n \ell_n(x)=\sum_{k=0}^n y_k \ell_k(x)
+$$
+Here $\ell_0, \ell_1, \ldots, \ell_n$ are polynomials that depend on the nodes $x_0, x_1, \ldots, x_n$ but not on the ordinates $y_0, y_1, \ldots, y_n$. Since all the ordinates could be 0 except for a 1 occupying the $i$ th position, we see that
+$$
+\delta_{i j}=p_n\left(x_j\right)=\sum_{k=0}^n y_k \ell_k\left(x_j\right)=\sum_{k=0}^n \delta_{k i} \ell_k\left(x_j\right)=\ell_i\left(x_j\right)
+$$
+(Recall that the Kronecker delta is defined by $\delta_{k i}=1$ if $k=i$ and $\delta_{k i}=0$ if $k \neq i$.) We can easily arrive at a set of polynomials having this property.
+
+Let us consider $\ell_0$. It is to be a polynomial of degree $n$ that takes the value 0 at $x_1, x_2, \ldots, x_n$ and the value 1 at $x_0$. Clearly, $\ell_0$ must be of the form
+$$
+\ell_0(x)=c\left(x-x_1\right)\left(x-x_2\right) \cdots\left(x-x_n\right)=c \prod_{j=1}^n\left(x-x_j\right)
+$$
+The value of $c$ is obtained by putting $x=x_0$, so that
+$$
+1=c \prod_{j=1}^n\left(x_0-x_j\right)
+$$
+and
+$$
+c=\prod_{j=1}^n\left(x_0-x_j\right)^{-1}
+$$
+Hence, we have
+$$
+\ell_0(x)=\prod_{j=1}^n \frac{x-x_j}{x_0-x_j}
+$$
