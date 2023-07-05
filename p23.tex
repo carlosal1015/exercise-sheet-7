@@ -39,9 +39,11 @@
 
 	\begin{proof}
 		Mencionaremos el siguiente teorema para justificar la unicidad
-		de la interpolación polinomial.
+		del polinomio de interpolación.
 
-		\begin{theorem}[Teorema de la interpolación polinomial]
+		\
+
+		\begin{theorem}[Existencia y unicidad del polinomio de interpolación $\Pi_{n}$]
 			Dados $n+1$ \alert{nodos distintos}
 			\begin{math}
 				x_{0},\ldots,x_{n}
@@ -55,13 +57,9 @@
 			$0\leq k\leq n$ se cumple $\Pi_{n}\left(x_{k}\right)=y_{k}$.
 		\end{theorem}
 
-		Por hipótesis, se tiene exactamente
-	\end{proof}
-\end{frame}
+		\
 
-\begin{frame}
-	\begin{solution}
-		Sean $n+1$ puntos distintos
+		Por hipótesis, se tiene exactamente $n+1$ puntos distintos
 		\begin{math}
 			{
 				\left\{
@@ -81,6 +79,19 @@
 			f\left(x_{k}\right)
 		\end{math}
 		para $0\leq k\leq n$.
+
+		\
+
+		Ahora, el lado izquierdo de la igualdad es el polinomio de
+		interpolación en la forma de \alert{Lagrange}
+		y el lado derecho es polinomio de interpolación en la forma de
+		\alert{Newton}.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\begin{solution}
+		Para encontrar la fórmula explícita de de la $n$-ésima forma divida
 
 		\begin{align*}
 			\sum\limits_{k=0}^{n}
