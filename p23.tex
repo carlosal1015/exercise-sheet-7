@@ -91,35 +91,69 @@
 
 \begin{frame}
 	\begin{solution}
-		Para encontrar la fórmula explícita de de la $n$-ésima forma divida
+		Para encontrar la fórmula explícita de la
+		\alert{$n$-ésima diferencia dividida}, comparemos el coeficiente
+		del término de grado $n$ en el polinomio de interpolación
 
-		\begin{align*}
+		\begin{equation*}
+			\Pi_{n}\left(x\right)=
 			\sum\limits_{k=0}^{n}
 			f\left(x_{k}\right)
-			\alert{\ell_{k}\left(x\right)} & =
+			\ell_{k}\left(x\right)=
 			\sum\limits_{k=0}^{n}
-			y_{k}
-			\alert{
-			\prod\limits_{\substack{j=0        \\j\neq k}}^{n}
-			\dfrac{x-x_{j}}{x_{k}-x_{j}}
-			}
-			\shortintertext{por el teorema X}
-			                               & =
-			\sum\limits_{k=0}^{n}
-			a_{k}
-			\omega_{k}\left(x\right).
-		\end{align*}
+			f\left[x_{0},x_{1},\ldots,x_{k}\right]
+			\prod\limits_{j=0}^{k-1}
+			\left(x-x_{j}\right).
+		\end{equation*}
 
-		\begin{align*}
+		En el lado derecho su coeficiente es
+		$a_{n}=f\left[x_{0},\ldots,x_{n}\right]$, mientras que en el lado
+		izquierdo es
+		\begin{math}
 			\sum\limits_{k=0}^{n}
 			f\left(x_{k}\right)
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			{\left(x_{k}-x_{j}\right)}^{-1}
-			 & =
-			\shortintertext{por el teorema Y}
-			 & =
-			a_{k}
-		\end{align*}
+			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
+			{\left(x_{k}-x_{j}\right)}^{-1}.
+		\end{math}.
+
+		Por lo tanto,
+
+		\begin{equation*}
+			f\left[x_{0},x_{1},\ldots,x_{n}\right]=
+			\sum\limits_{k=0}^{n}
+			f\left(x_{k}\right)
+			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
+			{\left(x_{k}-x_{j}\right)}^{-1}.
+		\end{equation*}
+
+
+		% \begin{align*}
+		% 	\sum\limits_{k=0}^{n}
+		% 	f\left(x_{k}\right)
+		% 	\alert{\ell_{k}\left(x\right)} & =
+		% 	\sum\limits_{k=0}^{n}
+		% 	y_{k}
+		% 	\alert{
+		% 	\prod\limits_{\substack{j=0        \\j\neq k}}^{n}
+		% 	\dfrac{x-x_{j}}{x_{k}-x_{j}}
+		% 	}
+		% 	\shortintertext{por el teorema X}
+		% 	                               & =
+		% 	\sum\limits_{k=0}^{n}
+		% 	a_{k}
+		% 	\omega_{k}\left(x\right).
+		% \end{align*}
+
+		% \begin{align*}
+		% 	\sum\limits_{k=0}^{n}
+		% 	f\left(x_{k}\right)
+		% 	\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+		% 	{\left(x_{k}-x_{j}\right)}^{-1}
+		% 	 & =
+		% 	\shortintertext{por el teorema Y}
+		% 	 & =
+		% 	a_{k}
+		% \end{align*}
 	\end{solution}
 \end{frame}
 
