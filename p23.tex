@@ -1,507 +1,19 @@
 \section{Pregunta N$^{\circ}$23\qquad Carlos Alonso Aznarán Laos}
 
-\begin{frame}
-	\frametitle{Polinomio de interpolación}
-
-	Sean $n+1$ puntos distintos
-	\begin{math}
-		{
-			\left\{
-			\left(x_{k},y_{k}\right)
-			\right\}
-		}_{k=0}^{n}\subset
-		\left[a,b\right]\times\mathbb{R}
-	\end{math}
-	y
-	\begin{math}
-		f\colon\left[a,b\right]\to
-		\mathbb{R}
-	\end{math}
-	una función de modo que
-	\begin{math}
-		y_{k}=
-		f\left(x_{k}\right)
-	\end{math}
-	para $0\leq k\leq n$.
-
-	\begin{definition}[Polinomio de interpolación en la forma de Lagrange]
-		\begin{equation*}
-			\Pi_{n}
-			f\left(x\right)\coloneqq
-			% y_{0}
-			% \ell_{0}\left(x\right)+
-			% y_{1}
-			% \ell_{1}\left(x\right)+
-			% \cdots+
-			% y_{n}
-			% \ell_{n}\left(x\right)=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\ell_{k}\left(x\right)\in\mathbb{P}_{n},
-		\end{equation*}
-		donde
-		\begin{math}
-			\ell_{k}
-			\left(x\right)\coloneq
-			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
-			\dfrac{x-x_{j}}{x_{k}-x_{j}}
-		\end{math}
-		para $0\leq k\leq n$ son los \emph{polinomios característicos}
-		que satisface
-		\begin{math}
-			\ell_{k}
-			\left(x_{j}\right)=
-			\delta_{kj}
-		\end{math}.
-
-		La evaluación de $\Pi_{n}f\left(x\right)$ requiere
-		$O\left(n^{2}\right)$ sumas y productos, en general, el algoritmo
-		es numéricamente inestable.
-	\end{definition}
-	% Here $\ell_{0},\ell_{1},\ldots,\ell_{n}$ are polynomials that
-	% depend on the nodes $x_0, x_1, \ldots, x_n$ but not on the
-	% ordinates $y_{0},y_{1},\ldots,y_{n}$.
-	% Since all the ordinates could be $0$ except for a $1$ occupying the
-	% $i$-th position, we see that
-
-	% \begin{equation*}
-	% 	\delta_{ij}=
-	% 	p_{n}
-	% 	\left(x_j\right)=
-	% 	\sum\limits_{k=0}^{n}
-	% 	y_{k}
-	% 	\ell_k\left(x_j\right)=
-	% 	\sum\limits_{k=0}^{n}
-	% 	\delta_{ki}
-	% 	\ell_{k}
-	% 	\left(x_j\right)=
-	% 	\ell_{i}
-	% 	\left(x_j\right).
-	% \end{equation*}
-
-	% (Recall that the Kronecker delta is defined by $\delta_{k i}=1$ if
-	% $k=i$ and $\delta_{k i}=0$ if $k \neq i$.)
-	% We can easily arrive at a set of polynomials having this property.
-	% Let us consider $\ell_{0}$.
-	% It is to be a polynomial of degree $n$ that takes the value $0$ at
-	% $x_{1},x_{2},\ldots,x_{n}$ and the value $1$ at $x_0$.
-	% Clearly, $\ell_{0}$ must be of the form
-
-	% \begin{equation*}
-	% 	\ell_{0}
-	% 	\left(x\right)=
-	% 	c
-	% 	\left(x-x_1\right)
-	% 	\left(x-x_2\right)\cdots
-	% 	\left(x-x_n\right)=
-	% 	c
-	% 	\prod\limits_{j=1}^{n}
-	% 	\left(x-x_j\right).
-	% \end{equation*}
-
-	% The value of $c$ is obtained by putting $x=x_{0}$, so that
-	% \begin{math}
-	% 	1=
-	% 	c
-	% 	\prod\limits_{j=1}^{n}
-	% 	\left(x_{0}-x_{j}\right)
-	% \end{math}
-	% y
-	% \begin{math}
-	% 	c=
-	% 	\prod\limits_{j=1}^{n}
-	% 	{\left(x_{0}-x_{j}\right)}^{-1}
-	% \end{math}.
-
-	\begin{definition}[Polinomio de interpolación en la forma de Newton]
-		\begin{equation*}
-			\Pi_{n}
-			f\left(x\right)\coloneqq
-			\sum\limits_{k=0}^{n}
-			a_{k}
-			\omega_{k}\left(x\right)\in\mathbb{P}_{n},
-		\end{equation*}
-		donde
-		\begin{itemize}
-			\item
-
-			      \begin{math}
-				      a_{k}\coloneqq
-				      f\left[x_{0},\ldots,x_{k}\right]
-			      \end{math}
-			      es la \emph{$k$-ésima diferencia dividida de Newton}, y
-
-			\item
-
-			      \begin{math}
-				      \omega_{k}
-				      \left(x\right)\coloneqq
-				      \prod\limits_{j=0}^{k-1}
-				      x-x_{j}
-			      \end{math}
-			      es el \emph{polinomio nodal de grado $k$}.
-		\end{itemize}
-		La evaluación de $\Pi_{n}f\left(x\right)$ requiere
-		$O\left(n\right)$.
-	\end{definition}
-\end{frame}
-
-% https://people.maths.ox.ac.uk/trefethen/barycentric.pdf
-\begin{frame}
-	\begin{definition}[Interpolación baricéntrica de Lagrange]
-		Con el fin de realizar menos operaciones en la interpolación
-		polinomial de Lagrange, multiplicamos por
-		\begin{math}
-			\alert{
-				\dfrac{1}{\omega_{n+1}\left(x\right)}
-			}
-		\end{math}
-		y resulta
-		\begin{align*}
-			\alert{
-				\dfrac{1}{\omega_{n+1}\left(x\right)}
-			}
-			\Pi_{n}f\left(x\right) & =
-			\alert{
-				\dfrac{1}{\omega_{n+1}\left(x\right)}
-			}
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\alert{
-				\ell_{k}\left(x\right)
-			}=
-			\dfrac{1}{\omega_{n+1}\left(x\right)}
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\alert{
-			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}
-			\dfrac{x-x_{j}}{x_{k}-x_{j}}
-			}.
-			\\
-			                       & =
-			\sum\limits_{k=0}^{n}
-			\left\{
-			\dfrac{y_{k}}{
-			\alert{
-			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}x_{k}-x_{j}
-			}
-			}
-			\dfrac{
-			\alert{
-			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}x-x_{j}
-			}
-			}{\omega_{n+1}\left(x\right)}
-			\right\}=
-			\sum\limits_{k=0}^{n}
-			\left\{
-			\dfrac{y_{k}}{\prod\limits_{\substack{j=0 \\j\neq k}}^{n}x_{k}-x_{j}}
-			\dfrac{1}{x-x_{k}}
-			\right\}.
-			\\
-			\Pi_{n}f\left(x\right)
-			                       & =
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\widetilde{\ell}_{k}\left(x\right)\in\mathbb{P}_{n},
-		\end{align*}
-		donde
-		\begin{columns}
-			\begin{column}{.45\paperwidth}
-				\begin{itemize}
-					\item
-
-					      \begin{math}
-						      \widetilde{\ell}_{k}
-						      \left(x\right)=
-						      \omega_{n+1}
-						      \left(x\right)
-						      \dfrac{b_{k}}{x-x_{k}}
-					      \end{math}, y
-				\end{itemize}
-			\end{column}
-			\begin{column}{.45\paperwidth}
-				\begin{itemize}
-					\item
-
-					      \begin{math}
-						      b_{j}=
-						      \dfrac{1}{
-						      \prod\limits_{\substack{j=0\\j\neq k}}^{n}
-						      x_{k}-x_{j}
-						      }
-					      \end{math}
-					      son los \emph{pesos baricéntricos}.
-				\end{itemize}
-			\end{column}
-		\end{columns}
-		% La evaluación de $\Pi_{n}f\left(x\right)$ requiere
-		% $O\left(n\right)$.
-	\end{definition}
-\end{frame}
-
-\begin{frame}
-	\begin{theorem}
-		Para $0\leq k\leq n$ se cumple
-		\begin{math}
-			w^{\prime}_{n+1}
-			\left(x_{k}\right)=
-			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
-			x_{k}-x_{j}.
-		\end{math}
-	\end{theorem}
-
-	\begin{proof}
-		Si
-		\begin{math}
-			\omega_{\alert{n+1}}
-			\left(x\right)
-			\overset{\text{def}}{=}
-			\prod\limits_{j=0}^{\alert{n+1}-1}
-			x-x_{j}=
-			\prod\limits_{j=0}^{n}
-			x-x_{j}
-		\end{math}, entonces
-		\begin{math}
-			\ln
-			\left(
-			\omega_{n+1}
-			\left(x\right)
-			\right)=
-			\ln
-			\left(
-			\prod\limits_{j=0}^{n}
-			x-x_{j}
-			\right)=
-			\sum\limits_{j=0}^{n}
-			\ln
-			\left(
-			x-x_{j}
-			\right)
-		\end{math}.
-		Derivando,
-
-		\begin{align*}
-			{\left(
-				\ln
-				\left(
-					\omega_{n+1}
-					\left(x\right)
-					\right)
-			\right)}^{\prime} & =
-			{\left(
-			\sum\limits_{j=0}^{n}
-			\ln
-			\left(
-				x-x_{j}
-				\right)
-			\right)}^{\prime}=
-			\sum\limits_{j=0}^{n}
-			{\left(
-			\ln
-			\left(
-				x-x_{j}
-				\right)
-			\right)}^{\prime}.
-			\\
-			\dfrac{
-				\omega^{\prime}_{n+1}\left(x\right)
-			}{
-				\alert{
-					\omega_{n+1}\left(x\right)
-				}
-			}                 & =
-			\sum\limits_{j=0}^{n}
-			\dfrac{{\left(x-x_{j}\right)}^{\prime}}{x-x_{j}}=
-			\sum\limits_{j=0}^{n}
-			\dfrac{1}{x-x_{j}}.
-			\\
-			\Aboxed{
-			w^{\prime}_{n+1}
-			\left(x\right)    & =
-			\alert{
-				\omega_{n+1}
-				\left(x\right)
-			}
-			\sum\limits_{j=0}^{n}
-			\dfrac{1}{x-x_{j}}.
-			}
-			\\
-			w^{\prime}_{n+1}
-			\left(x\right)
-			                  & =
-			\alert{
-				\prod\limits_{j=0}^{n}
-				\left(
-				x-x_{j}
-				\right)
-			}
-			\sum\limits_{j=0}^{n}
-			\dfrac{1}{x-x_{j}}=
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x-x_{j}.
-		\end{align*}
-		Si $x_{k}$ un punto nodal cualesquiera, donde $0\leq k\leq n$,
-		entonces
-		\begin{math}
-			w^{\prime}_{n+1}
-			\left(x_{k}\right)=
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
-		\end{math}.
-	\end{proof}
-\end{frame}
-
-\begin{frame}
-	\begin{theorem}
-		Si $\Pi_{n}f\left(x\right)$ el polinomio de Lagrange, entonces
-		\begin{math}
-			\Pi_{n}f\left(x\right)=
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				\omega_{n+1}\left(x\right)
-			}{
-				\left(x-x_{k}\right)\omega^{\prime}_{n+1}\left(x_{k}\right)
-			}
-			y_{k}
-		\end{math}.
-	\end{theorem}
-
-	\begin{proof}
-		\begin{equation*}
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				\omega_{n+1}\left(x\right)
-			}{
-				\left(x-x_{k}\right)
-				\alert{
-					\omega^{\prime}_{n+1}\left(x_{k}\right)
-				}
-			}
-			y_{k}=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\dfrac{
-			\prod\limits_{j=0}^{n}
-			x-x_{j}
-			}{
-			\left(x-x_{k}\right)
-			\alert{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
-			}
-			}=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\dfrac{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x-x_{j}
-			}{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
-			}
-			=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\alert{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			\dfrac{
-			x-x_{j}
-			}{
-			x_{k}-x_{j}
-			}
-			}
-			=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\alert{
-				\ell_{k}\left(x\right)
-			}=
-			\Pi_{n}
-			f\left(x\right).
-		\end{equation*}
-	\end{proof}
-
-	\begin{theorem}
-		.
-	\end{theorem}
-\end{frame}
-
-\begin{frame}
-	\begin{theorem}[Teorema de las diferencias divididas de orden superior]
-		Para $0\leq k\leq n$ se cumple
-		\begin{equation*}
-			a_{k}=
-			f\left[x_{0},\ldots,x_{k}\right]=
-			\dfrac{
-			f\left[x_{1},\ldots,x_{k}\right]-
-			f\left[x_{0},\ldots,x_{k-1}\right]
-			}{x_{k}-x_{0}}.
-			% \begin{cases}
-			% 	0 & \text{si} \\
-			% 	1 & \text{no}
-			% \end{cases}
-		\end{equation*}
-		La evaluación de $a_{n}$ requiere $n^{2}$ restas y
-		$\dfrac{n^{2}}{2}$ divisiones.
-	\end{theorem}
-
-	\begin{proof}
-		.
-	\end{proof}
-
-	\begin{theorem}[Representación explícita de $a_{n}$]
-		¿Usar la identidad entre $\omega_{k}\left(x\right)$ y
-		$\ell_{k}\left(x\right)$?
-		\begin{equation*}
-			a_{n}=
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				f\left(x_{k}\right)
-			}{
-				w^{\prime}_{n+1}
-				\left(x_{k}\right)
-			}.
-		\end{equation*}
-	\end{theorem}
-
-	\begin{proof}
-		\begin{equation*}
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-				f\left(x_{k}\right)
-			}{
-				\alert{
-					w^{\prime}_{n+1}
-					\left(x_{k}\right)
-				}
-			}=
-			\sum\limits_{k=0}^{n}
-			\dfrac{
-			f\left(x_{k}\right)
-			}{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
-			}
-		\end{equation*}
-	\end{proof}
-
-	% \begin{theorem}[Interpolación de Lagrange baricéntrica] % Fórmula baricéntrica
-	% 	\begin{equation*}
-	% 		\lambda_{k}\coloneqq
-	% 		\prod\limits_{\substack{j=0               \\j\neq k}}^{n}
-	% 		\dfrac{1}{x_{k}-x_{j}}=
-	% 		\dfrac{1}{\prod\limits_{\substack{j=0               \\j\neq k}}^{n}x_{k}-x_{j}}
-	% 	\end{equation*}
-	% \end{theorem}
-\end{frame}
+\input{interpolation}
+\input{interpolation_theorems}
 
 \begin{frame}
 	\begin{enumerate}\setcounter{enumi}{22}
 		\item
 
-		      Using the functions $\ell_{i}$ defined in Section 6.1
-		      (p. 312) and based on nodes $x_{0}, x_{1}, \ldots, x_{n}$,
-		      show that for any $f$
+		      Use la unicidad de la interpolación polinomial para
+		      concluir que
+
+		      % Using the functions $\ell_{i}$ defined in Section 6.1
+		      % (p. 312) and based on nodes $x_{0}, x_{1}, \ldots, x_{n}$,
+		      % show that for any $f$
+
 		      \begin{equation*}
 			      \sum\limits_{k=0}^{n}
 			      f\left(x_{k}\right)
@@ -512,7 +24,10 @@
 			      \left(x-x_{j}\right).
 		      \end{equation*}
 
-		      (Continuation) Prove this formula:
+		      % (Continuation) Prove this formula:
+		      y pruebe que la siguiente fórmula explícita es válida para
+		      la $n$-ésima diferencia dividida:
+
 		      \begin{equation*}
 			      f\left[x_{0},x_{1},\ldots,x_{n}\right]=
 			      \sum\limits_{k=0}^{n}
@@ -521,6 +36,27 @@
 			      {\left(x_{k}-x_{j}\right)}^{-1}.
 		      \end{equation*}
 	\end{enumerate}
+
+	\begin{proof}
+		Mencionaremos el siguiente teorema para justificar la unicidad
+		de la interpolación polinomial.
+
+		\begin{theorem}[Teorema de la interpolación polinomial]
+			Dados $n+1$ \alert{nodos distintos}
+			\begin{math}
+				x_{0},\ldots,x_{n}
+			\end{math}
+			y $n+1$ valores correspondientes
+			\begin{math}
+				y_{0},\ldots,y_{n}
+			\end{math},
+			entonces existe un \alert{único polinomio}
+			$\Pi_{n}\in\mathbb{P}_{n}$ tal que para cualquier
+			$0\leq k\leq n$ se cumple $\Pi_{n}\left(x_{k}\right)=y_{k}$.
+		\end{theorem}
+
+		Por hipótesis, se tiene exactamente
+	\end{proof}
 \end{frame}
 
 \begin{frame}
