@@ -135,7 +135,9 @@
 				      \omega_{k}
 				      \left(x\right)\coloneqq
 				      \prod\limits_{j=0}^{k-1}
+				      \left(
 				      x-x_{j}
+				      \right)
 			      \end{math}
 			      es el \alert{polinomio nodal de grado $k$}.
 		\end{itemize}
@@ -172,7 +174,7 @@
 			\sum\limits_{k=0}^{n}
 			y_{k}
 			\alert{
-			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
 			\dfrac{x-x_{j}}{x_{k}-x_{j}}
 			}.
 			\\
@@ -180,19 +182,30 @@
 			\sum\limits_{k=0}^{n}
 			\left\{
 			\dfrac{y_{k}}{
-			\alert{
-			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}x_{k}-x_{j}
-			}
+				\alert{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+					\left(
+					x_{k}-x_{j}
+					\right)
+				}
 			}
 			\dfrac{
-			\alert{
-			\prod\limits_{\substack{j=0               \\j\neq k}}^{n}x-x_{j}
-			}
+				\alert{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+					\left(
+					x-x_{j}
+					\right)
+				}
 			}{\omega_{n+1}\left(x\right)}
 			\right\}=
 			\sum\limits_{k=0}^{n}
 			\left\{
-			\dfrac{y_{k}}{\prod\limits_{\substack{j=0 \\j\neq k}}^{n}x_{k}-x_{j}}
+			\dfrac{y_{k}}{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+				\left(
+				x_{k}-x_{j}
+				\right)
+			}
 			\dfrac{1}{x-x_{k}}
 			\right\}.
 			\\
@@ -224,8 +237,10 @@
 					      \begin{math}
 						      b_{j}=
 						      \dfrac{1}{
-						      \prod\limits_{\substack{j=0\\j\neq k}}^{n}
-						      x_{k}-x_{j}
+							      \prod\limits_{\substack{j=0\\j\neq k}}^{n}
+							      \left(
+							      x_{k}-x_{j}
+							      \right)
 						      }
 					      \end{math}
 					      son los \emph{pesos baricéntricos}.

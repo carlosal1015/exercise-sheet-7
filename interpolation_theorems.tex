@@ -5,7 +5,9 @@
 			w^{\prime}_{n+1}
 			\left(x_{k}\right)=
 			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
-			x_{k}-x_{j}.
+			\left(
+			x_{k}-x_{j}
+			\right).
 		\end{math}
 	\end{theorem}
 
@@ -16,9 +18,13 @@
 			\left(x\right)
 			\overset{\text{def}}{=}
 			\prod\limits_{j=0}^{\alert{n+1}-1}
-			x-x_{j}=
-			\prod\limits_{j=0}^{n}
+			\left(
 			x-x_{j}
+			\right)=
+			\prod\limits_{j=0}^{n}
+			\left(
+			x-x_{j}
+			\right)
 		\end{math}, entonces
 		\begin{math}
 			\ln
@@ -29,7 +35,9 @@
 			\ln
 			\left(
 			\prod\limits_{j=0}^{n}
-			x-x_{j}
+			\left(
+				x-x_{j}
+				\right)
 			\right)=
 			\sum\limits_{j=0}^{n}
 			\ln
@@ -97,7 +105,9 @@
 			\sum\limits_{j=0}^{n}
 			\dfrac{1}{x-x_{j}}=
 			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x-x_{j}.
+			\left(
+			x-x_{j}
+			\right).
 		\end{align*}
 		Si $x_{k}$ un punto nodal cualesquiera, donde $0\leq k\leq n$,
 		entonces
@@ -105,7 +115,9 @@
 			w^{\prime}_{n+1}
 			\left(x_{k}\right)=
 			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+			\left(
 			x_{k}-x_{j}
+			\right)
 		\end{math}.
 	\end{proof}
 \end{frame}
@@ -119,14 +131,15 @@
 			\dfrac{
 				\omega_{n+1}\left(x\right)
 			}{
-				\left(x-x_{k}\right)\omega^{\prime}_{n+1}\left(x_{k}\right)
+				\left(x-x_{k}\right)
+				\omega^{\prime}_{n+1}\left(x_{k}\right)
 			}
 			y_{k}
 		\end{math}.
 	\end{theorem}
 
 	\begin{proof}
-		\begin{equation*}
+		\begin{align*}
 			\sum\limits_{k=0}^{n}
 			\dfrac{
 				\omega_{n+1}\left(x\right)
@@ -136,48 +149,60 @@
 					\omega^{\prime}_{n+1}\left(x_{k}\right)
 				}
 			}
-			y_{k}=
+			y_{k} & =
 			\sum\limits_{k=0}^{n}
 			y_{k}
 			\dfrac{
-			\prod\limits_{j=0}^{n}
-			x-x_{j}
+				\prod\limits_{j=0}^{n}
+				\left(
+				x-x_{j}
+				\right)
 			}{
-			\left(x-x_{k}\right)
+				\left(x-x_{k}\right)
+				\alert{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+					\left(
+					x_{k}-x_{j}
+					\right)
+				}
+			}
+			\\
+			      & =
+			\sum\limits_{k=0}^{n}
+			y_{k}
+			\dfrac{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+				\left(
+				x-x_{j}
+				\right)
+			}{
+			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+				\left(
+				x_{k}-x_{j}
+				\right)
+			}
+			\\
+			      & =
+			\sum\limits_{k=0}^{n}
+			y_{k}
 			\alert{
 			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
-			}
-			}=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\dfrac{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x-x_{j}
-			}{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
-			}
-			=
-			\sum\limits_{k=0}^{n}
-			y_{k}
-			\alert{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
 			\dfrac{
 			x-x_{j}
 			}{
 			x_{k}-x_{j}
 			}
-			}
-			=
+			}                           \\
+			      & =
 			\sum\limits_{k=0}^{n}
 			y_{k}
 			\alert{
 				\ell_{k}\left(x\right)
-			}=
+			}
+			=
 			\Pi_{n}
 			f\left(x\right).
-		\end{equation*}
+		\end{align*}
 	\end{proof}
 \end{frame}
 
@@ -232,10 +257,14 @@
 			}=
 			\sum\limits_{k=0}^{n}
 			\dfrac{
-			f\left(x_{k}\right)
+				f\left(x_{k}\right)
 			}{
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			x_{k}-x_{j}
+				\alert{
+					\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+					\left(
+					x_{k}-x_{j}
+					\right)
+				}
 			}
 		\end{equation*}
 	\end{proof}
