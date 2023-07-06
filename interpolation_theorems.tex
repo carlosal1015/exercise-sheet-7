@@ -2,7 +2,7 @@
 	\begin{theorem}
 		Para $0\leq k\leq n$ se cumple
 		\begin{math}
-			w^{\prime}_{n+1}
+			\omega^{\prime}_{n+1}
 			\left(x_{k}\right)=
 			\prod\limits_{\substack{j=0\\j\neq k}}^{n}
 			\left(
@@ -94,31 +94,39 @@
 			}
 			\\
 			w^{\prime}_{n+1}
-			\left(x\right)
+			\left(x_{k}\right)
 			                  & =
 			\alert{
 				\prod\limits_{j=0}^{n}
 				\left(
-				x-x_{j}
+				x_{k}-x_{j}
 				\right)
 			}
-			\sum\limits_{j=0}^{n}
-			\dfrac{1}{x-x_{j}}=
-			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
-			\left(
-			x-x_{j}
-			\right).
-		\end{align*}
-		Si $x_{k}$ un punto nodal cualesquiera, donde $0\leq k\leq n$,
-		entonces
-		\begin{math}
-			w^{\prime}_{n+1}
-			\left(x_{k}\right)=
+			\sum\limits_{i=0}^{n}
+			\dfrac{1}{x_{k}-x_{i}}=
+			\prod\limits_{j=0}^{n}
+			\sum\limits_{i=0}^{n}
+			\dfrac{
+			x_{k}-x_{j}
+			}{
+			x_{k}-x_{i}
+			}
+			=
 			\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
 			\left(
 			x_{k}-x_{j}
-			\right)
-		\end{math}.
+			\right).
+		\end{align*}
+		% Si $x_{k}$ un punto nodal cualesquiera, donde $0\leq k\leq n$,
+		% entonces
+		% \begin{math}
+		% 	w^{\prime}_{n+1}
+		% 	\left(x_{k}\right)=
+		% 	\prod\limits_{\substack{j=0 \\j\neq k}}^{n}
+		% 	\left(
+		% 	x_{k}-x_{j}
+		% 	\right)
+		% \end{math}.
 	\end{proof}
 \end{frame}
 
